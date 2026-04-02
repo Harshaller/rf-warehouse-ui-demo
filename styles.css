@@ -1,8 +1,12 @@
 html, body {
   height: 100%;
   margin: 0;
-  font-family: system-ui, Arial, sans-serif;
+  padding: 0;
+  overflow: hidden;       /* ✅ CRITICAL */
+  overscroll-behavior: none;
+  touch-action: manipulation;
   background: #f4f6f8;
+  font-family: system-ui, Arial, sans-serif;
 }
 
 /* Layout shell */
