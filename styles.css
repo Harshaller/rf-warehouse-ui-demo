@@ -60,9 +60,20 @@ html, body {
 
 /* Footer + CTA */
 .rf-footer {
-  padding: 16px 24px;   /* ✅ match content side padding */
+  flex-shrink: 0;
+
+  /* Base height */
+  height: 64px;
+
+  padding: 12px 16px 24px 16px;
+  margin-bottom: 12px;
+
+  /* ✅ SAFE AREA SUPPORT (THIS FIXES CUT-OFF BUTTON) */
+  padding-bottom: calc(12px + env(safe-area-inset-bottom));
+
   background: #ffffff;
   border-top: 1px solid #ddd;
+  box-sizing: border-box;
 }
 
 
