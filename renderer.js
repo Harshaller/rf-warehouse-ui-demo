@@ -1,10 +1,8 @@
-
 console.log("✅ renderer.js loaded");
 
 let flowData = {};
 let currentScreen = null;
 
-/* ✅ Ensure DOM is ready before boot */
 document.addEventListener("DOMContentLoaded", () => {
   loadScreen("GR_SCAN_DELIVERY");
 });
@@ -20,7 +18,7 @@ function loadScreen(screenId) {
       return res.json();
     })
     .then(meta => {
-      console.log("Loaded screen:", meta);
+      console.log("Loaded screen:", meta.screenId);
       renderScreen(meta);
     })
     .catch(err => console.error("Screen load failed:", err));
@@ -31,7 +29,6 @@ function renderScreen(meta) {
   const app = document.getElementById("app");
   const actionBtn = document.getElementById("primaryAction");
 
-  // ✅ Defensive checks (important)
   if (!header || !app || !actionBtn) {
     console.error("UI shell not found");
     return;
@@ -40,7 +37,7 @@ function renderScreen(meta) {
   header.textContent = meta.title || "";
   app.innerHTML = "";
 
-  // ✅ Render message screens
+  /* ✅ Message screen */
   if (meta.message) {
     const msg = document.createElement("div");
     msg.textContent = meta.message;
@@ -49,7 +46,7 @@ function renderScreen(meta) {
     app.appendChild(msg);
   }
 
-  // ✅ Render fields
+  /* ✅ Fields */
   if (meta.fields && meta.fields.length) {
     meta.fields.forEach(field => {
       const wrapper = document.createElement("div");
@@ -63,16 +60,18 @@ function renderScreen(meta) {
       input.id = field.id;
       input.value = flowData[field.id] || "";
 
-      if (field.autoFocus) input.autofocus = true;
-
       wrapper.appendChild(label);
       wrapper.appendChild(input);
       app.appendChild(wrapper);
+
+      if (field.autoFocus) {
+        setTimeout(() => input.focus(), 0);
+      }
     });
   }
 
+  /* ✅ Primary button */
   actionBtn.textContent = meta.action?.label || "Next";
-
   actionBtn.onclick = () => {
     if (meta.fields) {
       meta.fields.forEach(f => {
@@ -85,12 +84,15 @@ function renderScreen(meta) {
       loadScreen(meta.nextScreen);
     }
   };
-}
-// ✅ Auto‑advance for success / system screens
-if (meta.autoNext) {
-  const delay = meta.autoNext.delayMs || 1500;
 
-  setTimeout(() => {
-    loadScreen(meta.autoNext.nextScreen);
-  }, delay);
+  /* ✅ ✅ AUTO‑NEXT (THIS FIXES PUTAWAY) */
+  if (meta.autoNext) {
+    const delay = meta.autoNext.delayMs || 1500;
+    console.log(
+      `⏭ AutoNext: ${meta.screenId} → ${meta.autoNext.nextScreen}`
+    );
+    setTimeout(() => {
+      loadScreen(meta.autoNext.nextScreen);
+    }, delay);
+  }
 }
