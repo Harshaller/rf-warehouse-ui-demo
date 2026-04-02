@@ -1,0 +1,19 @@
+{
+  "screenId": "DAMAGE_REPORT",
+  "title": "Damage Reporting",
+  "fields": [
+    {
+      "id": "damageType",
+      "label": "Damage Type",
+      "type": "select",
+      "options": ["PACKAGING", "MATERIAL", "LEAKAGE"]
+    },
+    {
+      "id": "remarks",
+      "label": "Remarks",
+      "type": "text"
+    }
+  ],
+  "action": { "label": "Submit Report" },
+  "nextScreen": "TASK_COMPLETE"
+}

@@ -1,0 +1,20 @@
+{
+  "screenId": "POST_PUTAWAY_ACTION",
+  "title": "Putaway Completed",
+  "instruction": "Select next action",
+  "fields": [
+    {
+      "id": "nextAction",
+      "label": "Action",
+      "type": "select",
+      "options": [
+        "FINISH TASK",
+        "REPORT DAMAGE",
+        "QUALITY CHECK",
+        "REPACK HU"
+      ],
+      "autoFocus": true
+    }
+  ],
+  "action": { "label": "Proceed" }
+}

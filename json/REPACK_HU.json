@@ -1,0 +1,19 @@
+{
+  "screenId": "REPACK_HU",
+  "title": "Repack Handling Unit",
+  "fields": [
+    {
+      "id": "newHu",
+      "label": "New HU Number",
+      "type": "scan",
+      "autoFocus": true
+    },
+    {
+      "id": "packQty",
+      "label": "Packed Quantity",
+      "type": "number"
+    }
+  ],
+  "action": { "label": "Confirm Repack" },
+  "nextScreen": "TASK_COMPLETE"
+}

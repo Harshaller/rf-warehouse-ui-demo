@@ -73,6 +73,7 @@ function renderScreen(meta) {
   /* ✅ Primary button */
   actionBtn.textContent = meta.action?.label || "Next";
   actionBtn.onclick = () => {
+    /* ✅ Capture inputs */
     if (meta.fields) {
       meta.fields.forEach(f => {
         const el = document.getElementById(f.id);
@@ -80,12 +81,34 @@ function renderScreen(meta) {
       });
     }
 
+    /* ✅ ✅ POST PUTAWAY DECISION ROUTING (3rd flow start) */
+    if (meta.screenId === "POST_PUTAWAY_ACTION") {
+      const choice = flowData.nextAction;
+
+      const routeMap = {
+        "FINISH TASK": "TASK_COMPLETE",
+        "REPORT DAMAGE": "DAMAGE_REPORT",
+        "QUALITY CHECK": "QUALITY_CHECK",
+        "REPACK HU": "REPACK_HU"
+      };
+
+      if (!routeMap[choice]) {
+        alert("Please select an action");
+        return;
+      }
+
+      console.log("Routing to:", routeMap[choice]);
+      loadScreen(routeMap[choice]);
+      return;
+    }
+
+    /* ✅ Default linear navigation */
     if (meta.nextScreen) {
       loadScreen(meta.nextScreen);
     }
   };
 
-  /* ✅ ✅ AUTO‑NEXT (THIS FIXES PUTAWAY) */
+  /* ✅ Auto‑next for system screens */
   if (meta.autoNext) {
     const delay = meta.autoNext.delayMs || 1500;
     console.log(

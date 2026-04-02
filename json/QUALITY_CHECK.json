@@ -1,0 +1,19 @@
+{
+  "screenId": "QUALITY_CHECK",
+  "title": "Quality Inspection",
+  "fields": [
+    {
+      "id": "inspectionHU",
+      "label": "Inspection HU",
+      "type": "scan",
+      "autoFocus": true
+    },
+    {
+      "id": "qcPassed",
+      "label": "QC Passed",
+      "type": "checkbox"
+    }
+  ],
+  "action": { "label": "Confirm QC" },
+  "nextScreen": "TASK_COMPLETE"
+}

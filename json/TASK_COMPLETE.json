@@ -1,0 +1,9 @@
+{
+  "screenId": "TASK_COMPLETE",
+  "title": "Task Complete",
+  "message": "Warehouse task completed ✅",
+  "autoNext": {
+    "delayMs": 2000,
+    "nextScreen": "GR_SCAN_DELIVERY"
+  }
+}
