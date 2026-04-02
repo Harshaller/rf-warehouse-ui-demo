@@ -34,10 +34,46 @@ function renderScreen(meta) {
     return;
   }
 
+  /* ✅ ALWAYS reset footer visibility */
+  actionBtn.style.display = "block";
+
   header.textContent = meta.title || "";
   app.innerHTML = "";
 
-  /* ✅ Message screen */
+  /* ✅ ACTION BUTTON MENU (POST PUTAWAY) */
+  if (meta.actions && meta.actions.length) {
+    meta.actions.forEach(action => {
+      const btn = document.createElement("button");
+      btn.textContent = action.label;
+      btn.style.width = "100%";
+      btn.style.padding = "14px";
+      btn.style.fontSize = "18px";
+      btn.style.marginBottom = "12px";
+      btn.style.borderRadius = "6px";
+      btn.style.border = "none";
+      btn.style.background = "#0070f2";
+      btn.style.color = "#fff";
+
+      btn.onclick = () => {
+        const routes = {
+          FINISH_TASK: "TASK_COMPLETE",
+          REPORT_DAMAGE: "DAMAGE_REPORT",
+          QUALITY_CHECK: "QUALITY_CHECK",
+          REPACK_HU: "REPACK_HU"
+        };
+
+        loadScreen(routes[action.id]);
+      };
+
+      app.appendChild(btn);
+    });
+
+    /* ✅ Hide footer ONLY for this screen */
+    actionBtn.style.display = "none";
+    return;
+  }
+
+  /* ✅ MESSAGE */
   if (meta.message) {
     const msg = document.createElement("div");
     msg.textContent = meta.message;
@@ -46,7 +82,7 @@ function renderScreen(meta) {
     app.appendChild(msg);
   }
 
-  /* ✅ Fields */
+  /* ✅ FIELDS */
   if (meta.fields && meta.fields.length) {
     meta.fields.forEach(field => {
       const wrapper = document.createElement("div");
@@ -55,8 +91,20 @@ function renderScreen(meta) {
       const label = document.createElement("label");
       label.textContent = field.label;
 
-      const input = document.createElement("input");
-      input.type = field.type === "number" ? "number" : "text";
+      let input;
+      if (field.type === "select") {
+        input = document.createElement("select");
+        field.options.forEach(opt => {
+          const o = document.createElement("option");
+          o.value = opt;
+          o.textContent = opt;
+          input.appendChild(o);
+        });
+      } else {
+        input = document.createElement("input");
+        input.type = field.type === "number" ? "number" : "text";
+      }
+
       input.id = field.id;
       input.value = flowData[field.id] || "";
 
@@ -70,10 +118,9 @@ function renderScreen(meta) {
     });
   }
 
-  /* ✅ Primary button */
+  /* ✅ FOOTER BUTTON */
   actionBtn.textContent = meta.action?.label || "Next";
   actionBtn.onclick = () => {
-    /* ✅ Capture inputs */
     if (meta.fields) {
       meta.fields.forEach(f => {
         const el = document.getElementById(f.id);
@@ -81,41 +128,15 @@ function renderScreen(meta) {
       });
     }
 
-    /* ✅ ✅ POST PUTAWAY DECISION ROUTING (3rd flow start) */
-    if (meta.screenId === "POST_PUTAWAY_ACTION") {
-      const choice = flowData.nextAction;
-
-      const routeMap = {
-        "FINISH TASK": "TASK_COMPLETE",
-        "REPORT DAMAGE": "DAMAGE_REPORT",
-        "QUALITY CHECK": "QUALITY_CHECK",
-        "REPACK HU": "REPACK_HU"
-      };
-
-      if (!routeMap[choice]) {
-        alert("Please select an action");
-        return;
-      }
-
-      console.log("Routing to:", routeMap[choice]);
-      loadScreen(routeMap[choice]);
-      return;
-    }
-
-    /* ✅ Default linear navigation */
     if (meta.nextScreen) {
       loadScreen(meta.nextScreen);
     }
   };
 
-  /* ✅ Auto‑next for system screens */
+  /* ✅ AUTO NEXT */
   if (meta.autoNext) {
-    const delay = meta.autoNext.delayMs || 1500;
-    console.log(
-      `⏭ AutoNext: ${meta.screenId} → ${meta.autoNext.nextScreen}`
-    );
     setTimeout(() => {
       loadScreen(meta.autoNext.nextScreen);
-    }, delay);
+    }, meta.autoNext.delayMs || 1500);
   }
 }

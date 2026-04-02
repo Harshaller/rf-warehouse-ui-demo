@@ -1,20 +1,11 @@
 {
   "screenId": "POST_PUTAWAY_ACTION",
   "title": "Putaway Completed",
-  "instruction": "Select next action",
-  "fields": [
-    {
-      "id": "nextAction",
-      "label": "Action",
-      "type": "select",
-      "options": [
-        "FINISH TASK",
-        "REPORT DAMAGE",
-        "QUALITY CHECK",
-        "REPACK HU"
-      ],
-      "autoFocus": true
-    }
-  ],
-  "action": { "label": "Proceed" }
+  "instruction": "Choose next action",
+  "actions": [
+    { "id": "FINISH_TASK", "label": "✅ Finish Task" },
+    { "id": "REPORT_DAMAGE", "label": "⚠️ Report Damage" },
+    { "id": "QUALITY_CHECK", "label": "🔍 Quality Check" },
+    { "id": "REPACK_HU", "label": "📦 Repack HU" }
+  ]
 }
