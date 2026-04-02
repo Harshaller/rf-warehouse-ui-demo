@@ -1,0 +1,19 @@
+{
+  "screenId": "STAGE_SCAN_ORDER",
+  "title": "Production Staging",
+
+  "instruction": "Scan Production Order",
+
+  "fields": [
+    {
+      "id": "prodOrder",
+      "label": "Production Order",
+      "type": "scan",
+      "required": true,
+      "autoFocus": true
+    }
+  ],
+
+  "action": { "label": "Next" },
+  "nextScreen": "STAGE_SCAN_AREA"
+}

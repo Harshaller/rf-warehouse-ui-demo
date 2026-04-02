@@ -1,0 +1,15 @@
+{
+  "screenId": "GR_CONFIRM_QTY",
+  "title": "Goods Receipt",
+
+  "fields": [
+    {
+      "id": "quantity",
+      "label": "Received Quantity",
+      "type": "number"
+    }
+  ],
+
+  "action": { "label": "Post GR" },
+  "nextScreen": "GR_SUCCESS"
+}

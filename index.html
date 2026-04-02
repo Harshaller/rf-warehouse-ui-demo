@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- Mobile‑optimized viewport -->
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+  />
+
+  <title>RF Mobile App</title>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="rf-container">
+
+    <!-- ✅ EMPTY header – renderer controls content -->
+    <header class="rf-header"></header>
+
+    <!-- ✅ Renderer injects fields here -->
+    <main class="rf-content" id="app"></main>
+
+    <!-- ✅ Button exists, label controlled by metadata -->
+    <footer class="rf-footer">
+      <button id="primaryAction"></button>
+    </footer>
+
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

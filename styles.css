@@ -1,0 +1,73 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  background: #f4f6f8;
+}
+
+/* Layout shell */
+.rf-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Header */
+.rf-header {
+  padding: 12px 16px;
+  font-size: 18px;
+  font-weight: 600;
+  background: #ffffff;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Content area */
+.rf-content {
+  flex: 1;
+  padding: 20px 24px;   /* ✅ more left/right space */
+  overflow-y: auto;
+}
+
+
+/* Field block */
+.rf-field {
+  margin-bottom: 20px;
+}
+
+
+.rf-field label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+
+.rf-field input {
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+
+  box-sizing: border-box; /* ✅ CRITICAL FIX */
+}
+
+
+
+/* Footer + CTA */
+.rf-footer {
+  padding: 16px 24px;   /* ✅ match content side padding */
+  background: #ffffff;
+  border-top: 1px solid #ddd;
+}
+
+
+.rf-footer button {
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  background: #0070f2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}

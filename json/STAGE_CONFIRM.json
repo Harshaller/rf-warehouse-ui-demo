@@ -1,0 +1,9 @@
+{
+  "screenId": "STAGE_CONFIRM",
+  "title": "Production Staging",
+
+  "message": "Material staged successfully ✅",
+
+  "action": { "label": "New Task" },
+  "nextScreen": "GR_SCAN_DELIVERY"
+}

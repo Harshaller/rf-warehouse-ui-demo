@@ -1,0 +1,16 @@
+{
+  "screenId": "GR_SCAN_HU",
+  "title": "Goods Receipt",
+
+  "fields": [
+    {
+      "id": "hu",
+      "label": "Handling Unit",
+      "type": "scan",
+      "autoFocus": true
+    }
+  ],
+
+  "action": { "label": "Next" },
+  "nextScreen": "GR_CONFIRM_QTY"
+}

@@ -1,0 +1,9 @@
+{
+  "screenId": "PUTAWAY_CONFIRM",
+  "title": "Putaway",
+
+  "message": "Material successfully put away ✅",
+
+  "action": { "label": "Stage for Production" },
+  "nextScreen": "STAGE_SCAN_ORDER"
+}

@@ -1,0 +1,24 @@
+{
+  "screenId": "GR_QTY_EXCEPTION",
+  "title": "Quantity Difference",
+
+  "instruction": "Select reason for difference",
+
+  "fields": [
+    {
+      "id": "reasonCode",
+      "label": "Difference Reason",
+      "type": "select",
+      "options": [
+        "DAMAGED",
+        "SHORT_RECEIPT",
+        "OVER_RECEIPT",
+        "WRONG_LABEL"
+      ],
+      "required": true
+    }
+  ],
+
+  "action": { "label": "Post Difference" },
+  "nextScreen": "PUTAWAY_SCAN_BIN"
+}

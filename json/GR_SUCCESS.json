@@ -1,0 +1,11 @@
+{
+  "screenId": "GR_SUCCESS",
+  "title": "Goods Receipt",
+
+  "message": "Goods Receipt Posted Successfully ✅",
+
+  "autoNext": {
+    "delayMs": 2000,
+    "nextScreen": "PUTAWAY_SCAN_BIN"
+  }
+}

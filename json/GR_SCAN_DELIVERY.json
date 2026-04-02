@@ -1,0 +1,16 @@
+{
+  "screenId": "GR_SCAN_DELIVERY",
+  "title": "Goods Receipt",
+
+  "fields": [
+    {
+      "id": "delivery",
+      "label": "Inbound Delivery",
+      "type": "scan",
+      "autoFocus": true
+    }
+  ],
+
+  "action": { "label": "Next" },
+  "nextScreen": "GR_SCAN_HU"
+}

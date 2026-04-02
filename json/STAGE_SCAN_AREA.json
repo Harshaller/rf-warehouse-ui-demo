@@ -1,0 +1,18 @@
+{
+  "screenId": "STAGE_SCAN_AREA",
+  "title": "Production Staging",
+
+  "instruction": "Scan staging area",
+
+  "fields": [
+    {
+      "id": "stagingArea",
+      "label": "Staging Area",
+      "type": "scan",
+      "required": true
+    }
+  ],
+
+  "action": { "label": "Confirm Staging" },
+  "nextScreen": "STAGE_CONFIRM"
+}

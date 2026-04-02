@@ -1,0 +1,19 @@
+{
+  "screenId": "PUTAWAY_SCAN_BIN",
+  "title": "Putaway",
+
+  "instruction": "Scan suggested destination bin",
+
+  "fields": [
+    {
+      "id": "suggestedBin",
+      "label": "Destination Bin",
+      "type": "scan",
+      "required": true,
+      "autoFocus": true
+    }
+  ],
+
+  "action": { "label": "Confirm Bin" },
+  "nextScreen": "PUTAWAY_CONFIRM"
+}
